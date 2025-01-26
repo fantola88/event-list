@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos na Cidade</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: row;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            border-right: 1px solid #ddd;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .filter-option {
+            margin-bottom: 10px;
+        }
+        .container {
+            flex: 1;
+            padding: 20px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .event-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .event-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .event-content {
+            padding: 15px;
+            text-align: center;
+        }
+        .event-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .like-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .like-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar for Filtering Options -->
+    <div class="sidebar">
+        <h2>Filtrar Eventos</h2>
+        <div class="filter-option">
+            <label for="date-filter">Data:</label>
+            <input type="date" id="date-filter">
+        </div>
+        <div class="filter-option">
+            <label for="type-filter">Tipo:</label>
+            <select id="type-filter">
+                <option value="all">Todos</option>
+                <option value="music">Música</option>
+                <option value="sports">Esportes</option>
+                <option value="art">Arte</option>
+            </select>
+        </div>
+        <button class="like-button">Aplicar Filtros</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Eventos na Cidade</h1>
+        <div class="grid">
+            <!-- Card Example with Image -->
+            <div class="event-card">
+                <img src="https://via.placeholder.com/300x150" alt="Evento 1" class="event-image">
+                <div class="event-content">
+                    <div class="event-title">Evento 1</div>
+                    <button class="like-button">Curtir</button>
+                </div>
+            </div>
+            <div class="event-card">
+                <img src="https://via.placeholder.com/300x150" alt="Evento 2" class="event-image">
+                <div class="event-content">
+                    <div class="event-title">Evento 2</div>
+                    <button class="like-button">Curtir</button>
+                </div>
+            </div>
+            <div class="event-card">
+                <img src="https://via.placeholder.com/300x150" alt="Evento 3" class="event-image">
+                <div class="event-content">
+                    <div class="event-title">Evento 3</div>
+                    <button class="like-button">Curtir</button>
+                </div>
+            </div>
+            <div class="event-card">
+                <img src="https://via.placeholder.com/300x150" alt="Evento 4" class="event-image">
+                <div class="event-content">
+                    <div class="event-title">Evento 4</div>
+                    <button class="like-button">Curtir</button>
+                </div>
+            </div>
+            <div class="event-card">
+                <img src="https://via.placeholder.com/300x150" alt="Evento 5" class="event-image">
+                <div class="event-content">
+                    <div class="event-title">Evento 5</div>
+                    <button class="like-button">Curtir</button>
+                </div>
+            </div>
+            <div class="event-card">
+                <img src="https://via.placeholder.com/300x150" alt="Evento 6" class="event-image">
+                <div class="event-content">
+                    <div class="event-title">Evento 6</div>
+                    <button class="like-button">Curtir</button>
+                </div>
+            </div>
+            <div class="event-card">
+                <img src="https://via.placeholder.com/300x150" alt="Evento 7" class="event-image">
+                <div class="event-content">
+                    <div class="event-title">Evento 7</div>
+                    <button class="like-button">Curtir</button>
+                </div>
+            </div>
+            <div class="event-card">
+                <img src="https://via.placeholder.com/300x150" alt="Evento 8" class="event-image">
+                <div class="event-content">
+                    <div class="event-title">Evento 8</div>
+                    <button class="like-button">Curtir</button>
+                </div>
+            </div>
+            <div class="event-card">
+                <img src="https://via.placeholder.com/300x150" alt="Evento 9" class="event-image">
+                <div class="event-content">
+                    <div class="event-title">Evento 9</div>
+                    <button class="like-button">Curtir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
