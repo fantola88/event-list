@@ -9,5 +9,6 @@ class RegistrationForm(forms.ModelForm):
         model = CustomUser
         fields = ['nickname', 'email', 'password']
 
-class LoginForm(AuthenticationForm):
-    username = forms.CharField(label="Nickname")
+class LoginForm(forms.Form):  # Modificando para não herdar diretamente de AuthenticationForm
+    nickname = forms.CharField(label="Nickname", max_length=50)
+    password = forms.CharField(widget=forms.PasswordInput, label="Senha")

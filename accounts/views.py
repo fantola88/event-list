@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from .forms import RegistrationForm, LoginForm
+from django.contrib.auth.decorators import login_required
 
 def register(request):
     if request.method == 'POST':
@@ -17,16 +18,23 @@ def register(request):
 
 def user_login(request):
     if request.method == 'POST':
-        form = LoginForm(data=request.POST)
+        form = LoginForm(request.POST)
         if form.is_valid():
-            user = authenticate(
-                request,
-                username=form.cleaned_data['username'],
-                password=form.cleaned_data['password'],
-            )
+            nickname = form.cleaned_data['nickname']
+            password = form.cleaned_data['password']
+
+            # Autenticar usuário com nickname
+            user = authenticate(request, username=nickname, password=password)
             if user:
                 login(request, user)
-                return redirect('/home')  # Mude para a sua página inicial
+                return redirect('/home')  # Redirecione para a página inicial
+            else:
+                form.add_error(None, "Credenciais inválidas. Verifique seu nickname e senha.")
     else:
         form = LoginForm()
     return render(request, 'accounts/login.html', {'form': form})
+
+@login_required
+def logout_view(request):
+    logout(request)  # Remove todas as informações da sessão do usuário
+    return redirect('login')  # Redireciona para a página de login
