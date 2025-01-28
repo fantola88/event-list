@@ -26,6 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'feed',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -121,6 +124,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# Configuração de autenticação
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
+# Configurações adicionais, como redirecionamento pós-login (opcional):
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'login'  # Substitua pelo path correto para a sua página de login
+LOGOUT_REDIRECT_URL = '/'
+
+
+STATICFILES_DIR = [
+    os.path.join(BASE_DIR, 'config/static')
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
