@@ -5,13 +5,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Evento</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <h2>Cadastrar Evento</h2>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Cadastrar</button>
-    </form>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Cadastrar Evento</h2>
+        <form method="POST" class="space-y-4">
+            {% csrf_token %}
+            <!-- Campos do formulário -->
+            {% for field in form %}
+                <div class="flex flex-col">
+                    <label for="{{ field.id_for_label }}" class="text-sm font-medium text-gray-700 mb-1">
+                        {{ field.label }}
+                    </label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="text-red-500 text-sm mt-1">
+                            {{ field.errors|join:", " }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <!-- Botão de cadastro -->
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-200">
+                Cadastrar
+            </button>
+        </form>
+    </div>
 </body>
 </html>
