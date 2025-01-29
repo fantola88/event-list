@@ -24,4 +24,6 @@ urlpatterns = [
     path('', lambda request: redirect('/home')),  # Redireciona para /home
     path('', include('feed.urls')),
     path('accounts/', include('accounts.urls')),
+    path('events/', include('events.urls')),
+    path('chat/', include('chat.urls')),
 ]
