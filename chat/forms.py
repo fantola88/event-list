@@ -5,3 +5,6 @@ class MessageForm(forms.ModelForm):
     class Meta:
         model = Message
         fields = ['content']
+        widgets = {
+            'content': forms.Textarea(attrs={'placeholder': 'Digite sua mensagem...'})
+        }
