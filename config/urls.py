@@ -25,4 +25,5 @@ urlpatterns = [
     path('', include('feed.urls')),
     path('accounts/', include('accounts.urls')),
     path('events/', include('events.urls')),
+    path('interactions/', include('interactions.urls')),
 ]

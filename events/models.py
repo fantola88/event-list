@@ -2,6 +2,7 @@
 from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Count
 
 class Event(models.Model):
     name = models.CharField(max_length=200)
@@ -11,3 +12,12 @@ class Event(models.Model):
 
     def __str__(self):
         return self.name
+    
+    @property
+    def like_count(self):
+        return self.likes.count()
+    
+    @classmethod
+    def get_ranked_events(cls):
+        # Retorna todos os eventos ordenados pelo número de curtidas (do maior para o menor)
+        return cls.objects.annotate(total_likes=Count('likes')).order_by('-total_likes')

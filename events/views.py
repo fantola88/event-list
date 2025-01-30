@@ -2,6 +2,7 @@
 from django.shortcuts import render, redirect
 from .forms import EventForm
 from django.contrib.auth.decorators import login_required
+from .models import Event
 
 @login_required
 def create_event(request):
@@ -16,3 +17,4 @@ def create_event(request):
         form = EventForm()
 
     return render(request, 'events/create_event.html', {'form': form})
+
