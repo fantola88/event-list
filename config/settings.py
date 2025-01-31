@@ -150,3 +150,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# No final do arquivo settings.py, adicione:
+MEDIA_URL = '/media/'  # URL base para servir arquivos de mídia
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Caminho no sistema de arquivos para salvar as mídias

@@ -11,4 +11,4 @@ def like_event(request, event_id):
     like, created = Like.objects.get_or_create(user=request.user, event=event)
     if not created:
         like.delete()  # Remove a curtida se já existir (funcionalidade de "descurtir")
-    return redirect('index')  # Redireciona para a página inicial ou outra URL
+    return redirect('feed:index')  # Redireciona para a página inicial ou outra URL

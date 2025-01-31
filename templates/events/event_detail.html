@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ event.name }} - Detalhes</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Voltar para a página inicial -->
+        <a href="{% url 'feed:index' %}" class="text-blue-500 hover:underline">Voltar</a>
+
+        <!-- Título do evento -->
+        <h1 class="text-3xl font-bold mt-4">{{ event.name }}</h1>
+
+        <!-- Imagem do evento -->
+        {% if event.image %}
+            <img src="{{ event.image.url }}" alt="{{ event.name }}" class="w-full h-64 object-cover rounded-lg mt-6">
+        {% else %}
+            <div class="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center mt-6">
+                <span class="text-gray-500">Sem imagem</span>
+            </div>
+        {% endif %}
+
+        <!-- Descrição do evento -->
+        <p class="text-gray-700 mt-6">{{ event.description }}</p>
+
+        <!-- Localização do evento -->
+        <div class="mt-6">
+            <a class="text-xl font-semibold">Localização</a>
+            <p class="text-gray-700">{{ event.location }}</p>
+        </div>
+
+        <!-- Criador do evento -->
+        <div class="mt-6">
+            <h2 class="text-xl font-semibold">Criado por</h2>
+            <p class="text-gray-700">{{ event.creator.nickname }}</p>
+        </div>
+    </div>
+</body>
+</html>
