@@ -59,7 +59,10 @@
     {% if event.latitude and event.longitude %}
     <script>
         function initMap() {
-            var eventLocation = { lat: {{ event.latitude }}, lng: {{ event.longitude }} };
+            var eventLocation = { 
+    lat: parseFloat("{{ event.latitude }}"), 
+    lng: parseFloat("{{ event.longitude }}") 
+};
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 15,
                 center: eventLocation
