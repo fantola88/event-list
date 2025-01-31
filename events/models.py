@@ -8,8 +8,10 @@ class Event(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
     location = models.CharField(max_length=255)  # Localização do evento
+    latitude = models.FloatField(blank=True, null=True)
+    longitude = models.FloatField(blank=True, null=True)
     image = models.ImageField(upload_to='events/', blank=True, null=True)  # Campo para a imagem
-    creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)  # Atualize essa linha
+    creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)  # Data de criação do evento
 
     def __str__(self):

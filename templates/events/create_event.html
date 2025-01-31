@@ -32,5 +32,15 @@
             </button>
         </form>
     </div>
+
+    <!-- Script do Google Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=SUA_CHAVE_AQUI&libraries=places"></script>
+    <script>
+        function initAutocomplete() {
+            var input = document.getElementById("id_endereco");
+            var autocomplete = new google.maps.places.Autocomplete(input);
+        }
+        window.onload = initAutocomplete;
+    </script>
 </body>
 </html>
